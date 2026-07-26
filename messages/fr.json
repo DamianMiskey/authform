@@ -1,0 +1,56 @@
+{
+  "auth": {
+    "register": {
+      "title": "Créer un compte",
+      "description": "Renseignez vos informations pour commencer.",
+      "steps": {
+        "account": "Compte",
+        "security": "Sécurité",
+        "organization": "Organisation"
+      },
+      "stepLabel": "Étape {step} sur {total} : {title}",
+      "layoutToggle": {
+        "standard": "Standard",
+        "stepper": "Par étapes"
+      },
+      "fields": {
+        "name": "Nom complet",
+        "email": "E-mail",
+        "dob": "Date de naissance",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "company": "Entreprise"
+      },
+      "placeholders": {
+        "name": "Jeanne Dupont",
+        "email": "jeanne@exemple.com",
+        "company": "Acme Inc.",
+        "pickDate": "Choisir une date"
+      },
+      "checkboxes": {
+        "ageConfirm": "Je confirme avoir 18 ans ou plus",
+        "terms": "J'accepte les Conditions d'utilisation et la Politique de confidentialité"
+      },
+      "submit": "Créer le compte",
+      "continue": "Continuer",
+      "back": "Retour",
+      "startOver": "Recommencer",
+      "success": {
+        "title": "Compte créé",
+        "welcome": "Bienvenue, {name}.",
+        "welcomeWithCompany": "Bienvenue, {name} de {company}."
+      }
+    }
+  },
+  "errors": {
+    "nameRequired": "Le nom est requis",
+    "emailInvalid": "Saisissez un e-mail valide",
+    "dobRequired": "La date de naissance est requise",
+    "dobUnderage": "Vous devez avoir au moins 18 ans pour vous inscrire",
+    "passwordTooShort": "Au moins 8 caractères",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "companyRequired": "L'entreprise est requise",
+    "ageConfirmRequired": "Vous devez confirmer que vous avez 18 ans ou plus",
+    "termsRequired": "Vous devez accepter les conditions"
+  }
+}

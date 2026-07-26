@@ -1,0 +1,25 @@
+{
+  "//": "Not a full package.json — just the dependencies this feature needs. Merge these into your existing monorepo package.json.",
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "next-intl": "^4.0.0",
+    "react-hook-form": "^7.54.0",
+    "@hookform/resolvers": "^3.9.0",
+    "zod": "^3.24.0",
+    "date-fns": "^4.1.0",
+    "clsx": "^2.1.0",
+    "tailwind-merge": "^2.5.0",
+    "lucide-react": "^0.383.0",
+    "@vercel/functions": "^1.0.0"
+  },
+  "optionalDependencies": {
+    "//sanity": "Only needed if you enable lib/cms/sanity-adapter.ts",
+    "next-sanity": "^9.0.0",
+    "//payload": "Only needed if you enable lib/cms/payload-adapter.ts — Payload itself, no client library needed since the adapter just uses fetch()"
+  },
+  "shadcnComponentsNeeded": [
+    "npx shadcn@latest add card input label button checkbox progress popover calendar dropdown-menu form"
+  ]
+}

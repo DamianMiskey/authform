@@ -1,0 +1,68 @@
+/* The 3-tier cascade: global defaults -> brand overrides -> page-type
+ * overrides. BrandProvider sets --brand-* at runtime via inline style;
+ * the [data-brand="x"] blocks below are just an SSR-safe fallback so
+ * brand colors are correct before JS hydrates. */
+
+@import "tailwindcss";
+
+/* Tailwind v4 has no config file, so class-based dark mode (as opposed
+ * to the default prefers-color-scheme-only behavior) needs this explicit
+ * variant. next-themes toggles the "dark" class on <html>; this is what
+ * makes `dark:` utilities actually respond to that class rather than only
+ * the OS-level media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --brand-primary: 222 47% 11%;
+  --brand-primary-foreground: 0 0% 100%;
+  --brand-accent: 210 40% 96%;
+  --brand-ring: 222 47% 11%;
+  --brand-radius: 0.5rem;
+
+  /* Light/dark surface tokens — independent of brand. A brand's primary
+   * color stays the same in both themes; what changes is the page/card
+   * background and body text around it. */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+}
+
+.dark {
+  --background: 222 47% 8%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --border: 217 33% 20%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+}
+
+[data-page="auth"] {
+  --brand-radius: 0.75rem;
+}
+
+@theme inline {
+  --color-primary: hsl(var(--brand-primary));
+  --color-primary-foreground: hsl(var(--brand-primary-foreground));
+  --color-accent: hsl(var(--brand-accent));
+  --color-ring: hsl(var(--brand-ring));
+  --radius: var(--brand-radius);
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-border: hsl(var(--border));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+}

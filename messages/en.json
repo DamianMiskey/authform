@@ -1,0 +1,56 @@
+{
+  "auth": {
+    "register": {
+      "title": "Create an account",
+      "description": "Fill in your details to get started.",
+      "steps": {
+        "account": "Account",
+        "security": "Security",
+        "organization": "Organization"
+      },
+      "stepLabel": "Step {step} of {total}: {title}",
+      "layoutToggle": {
+        "standard": "Standard",
+        "stepper": "Stepper"
+      },
+      "fields": {
+        "name": "Full name",
+        "email": "Email",
+        "dob": "Date of birth",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "company": "Company"
+      },
+      "placeholders": {
+        "name": "Jane Doe",
+        "email": "jane@example.com",
+        "company": "Acme Inc.",
+        "pickDate": "Pick a date"
+      },
+      "checkboxes": {
+        "ageConfirm": "I confirm that I am 18 years of age or older",
+        "terms": "I agree to the Terms of Service and Privacy Policy"
+      },
+      "submit": "Create account",
+      "continue": "Continue",
+      "back": "Back",
+      "startOver": "Start over",
+      "success": {
+        "title": "Account created",
+        "welcome": "Welcome, {name}.",
+        "welcomeWithCompany": "Welcome, {name} from {company}."
+      }
+    }
+  },
+  "errors": {
+    "nameRequired": "Name is required",
+    "emailInvalid": "Enter a valid email",
+    "dobRequired": "Date of birth is required",
+    "dobUnderage": "You must be at least 18 years old to register",
+    "passwordTooShort": "At least 8 characters",
+    "passwordMismatch": "Passwords don't match",
+    "companyRequired": "Company is required",
+    "ageConfirmRequired": "You must confirm you are 18 or older",
+    "termsRequired": "You must accept the terms"
+  }
+}
