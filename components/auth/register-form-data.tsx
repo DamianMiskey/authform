@@ -19,7 +19,8 @@ export async function RegisterFormData() {
     getRegistrationFields(),
   ]);
 
-  const country = headersList.get("x-user-country") ?? "US";
+  const country =
+    headersList.get("x-user-country")?.trim().toUpperCase() || "US";
   const fieldStatus = resolveFieldStatus(country, rules);
 
   return <RegisterFormToggle fieldStatus={fieldStatus} />;
@@ -29,7 +30,7 @@ export function RegisterFormSkeleton() {
   return (
     <div className="w-full max-w-xl space-y-4">
       <div className="h-8 w-full rounded-md bg-slate-200/70 animate-pulse" />
-      <div className="h-[520px] w-full rounded-md bg-slate-200/70 animate-pulse" />
+      <div className="h-130 w-full rounded-md bg-slate-200/70 animate-pulse" />
     </div>
   );
 }

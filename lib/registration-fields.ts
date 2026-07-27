@@ -20,7 +20,7 @@ const DEFAULT_STATUS: Record<RegistrationFieldKey, FieldStatus> = {
 
 function matchesCountry(
   country: string,
-  rule: { countries?: string[]; excludeCountries?: string[] }
+  rule: { countries?: string[]; excludeCountries?: string[] },
 ): boolean {
   if (rule.excludeCountries?.includes(country)) return false;
   if (rule.countries && !rule.countries.includes(country)) return false;
@@ -33,11 +33,12 @@ export type FieldStatusMap = Record<RegistrationFieldKey, FieldStatus>;
 // rules so a country-specific override comes before its fallback.
 export function resolveFieldStatus(
   country: string,
-  rules: RegistrationFieldRule[]
+  rules: RegistrationFieldRule[],
 ): FieldStatusMap {
+  const code = country.trim().toUpperCase();
   const result = { ...DEFAULT_STATUS };
   for (const key of Object.keys(DEFAULT_STATUS) as RegistrationFieldKey[]) {
-    const match = rules.find((r) => r.field === key && matchesCountry(country, r));
+    const match = rules.find((r) => r.field === key && matchesCountry(code, r));
     if (match) result[key] = match.status;
   }
   return result;
