@@ -1,56 +1,141 @@
 {
   "auth": {
+    "common": {
+      "haveAccountPrompt": "Already have an account?",
+      "noAccountPrompt": "Don't have an account?",
+      "logIn": "Log in",
+      "register": "Register"
+    },
+    "login": {
+      "title": "Welcome back",
+      "description": "Log in to continue.",
+      "fields": {
+        "username": "Username",
+        "password": "Password"
+      },
+      "placeholders": {
+        "username": "janedoe"
+      },
+      "submit": "Log in",
+      "success": {
+        "title": "Logged in",
+        "welcome": "Welcome back, {username}."
+      }
+    },
     "register": {
       "title": "Create an account",
       "description": "Fill in your details to get started.",
       "steps": {
         "account": "Account",
-        "security": "Security",
-        "organization": "Organization"
+        "personal": "Personal",
+        "background": "Background",
+        "contact": "Contact",
+        "verify": "Verify"
       },
       "stepLabel": "Step {step} of {total}: {title}",
+      "regModeToggle": {
+        "full": "Full",
+        "minReg": "Quick sign-up"
+      },
       "layoutToggle": {
         "standard": "Standard",
         "stepper": "Stepper"
       },
+      "indicatorToggle": {
+        "icons": "Icons",
+        "numbers": "Numbers"
+      },
       "fields": {
-        "name": "Full name",
+        "username": "Username",
         "email": "Email",
-        "dob": "Date of birth",
         "password": "Password",
         "confirmPassword": "Confirm password",
-        "company": "Company"
+        "firstName": "First name",
+        "middleName": "Middle name",
+        "lastName": "Last name",
+        "dob": "Date of birth",
+        "occupationIndustry": "Occupation industry",
+        "occupationJobTitle": "Job title",
+        "country": "Country",
+        "preferredLanguage": "Preferred language",
+        "currency": "Currency",
+        "dialCode": "Code",
+        "mobileNumber": "Mobile number",
+        "addressLine1": "Address line 1",
+        "addressLine2": "Address line 2",
+        "city": "City",
+        "stateProvince": "Province / State",
+        "postCode": "Postal code",
+        "politicallyExposedPerson": "Are you a politically exposed person?"
       },
       "placeholders": {
-        "name": "Jane Doe",
+        "username": "janedoe",
         "email": "jane@example.com",
-        "company": "Acme Inc.",
-        "pickDate": "Pick a date"
+        "firstName": "Jane",
+        "middleName": "",
+        "lastName": "Doe",
+        "dob": "Pick a date",
+        "occupationIndustry": "Select your industry",
+        "occupationJobTitle": "Software Engineer",
+        "country": "Select your country",
+        "preferredLanguage": "Select a language",
+        "currency": "Select a currency",
+        "dialCode": "Code",
+        "mobileNumber": "(555) 555-0123",
+        "addressLine1": "123 Main St",
+        "addressLine2": "Apt, suite, etc. (optional)",
+        "city": "Toronto",
+        "stateProvince": "Select a province or state",
+        "postCode": "M5V 2T6"
       },
       "checkboxes": {
-        "ageConfirm": "I confirm that I am 18 years of age or older",
-        "terms": "I agree to the Terms of Service and Privacy Policy"
+        "promotionalOffers": "Send me promotions and bonus offers by email and SMS",
+        "terms": "I confirm I am 18 years of age or older and I agree to the Terms of Service and Privacy Policy"
+      },
+      "radio": {
+        "politicallyExposedPerson": {
+          "yes": "Yes",
+          "no": "No"
+        }
       },
       "submit": "Create account",
       "continue": "Continue",
       "back": "Back",
       "startOver": "Start over",
+      "minReg": {
+        "title": "Quick sign-up",
+        "description": "Just the essentials — you can finish your profile later.",
+        "submit": "Create account"
+      },
       "success": {
         "title": "Account created",
-        "welcome": "Welcome, {name}.",
-        "welcomeWithCompany": "Welcome, {name} from {company}."
+        "welcome": "Welcome, {name}."
       }
     }
   },
   "errors": {
-    "nameRequired": "Name is required",
+    "usernameRequired": "Username is required",
+    "usernameTooShort": "At least 3 characters",
     "emailInvalid": "Enter a valid email",
-    "dobRequired": "Date of birth is required",
-    "dobUnderage": "You must be at least 18 years old to register",
     "passwordTooShort": "At least 8 characters",
     "passwordMismatch": "Passwords don't match",
-    "companyRequired": "Company is required",
-    "ageConfirmRequired": "You must confirm you are 18 or older",
+    "firstNameRequired": "First name is required",
+    "middleNameRequired": "Middle name is required",
+    "lastNameRequired": "Last name is required",
+    "dobRequired": "Date of birth is required",
+    "dobUnderage": "You must be at least 18 years old to register",
+    "occupationIndustryRequired": "Occupation industry is required",
+    "occupationJobTitleRequired": "Job title is required",
+    "countryRequired": "Country is required",
+    "preferredLanguageRequired": "Preferred language is required",
+    "currencyRequired": "Currency is required",
+    "dialCodeRequired": "Code is required",
+    "mobileNumberRequired": "Mobile number is required",
+    "addressLine1Required": "Address is required",
+    "cityRequired": "City is required",
+    "stateProvinceRequired": "Province / State is required",
+    "postCodeRequired": "Postal code is required",
+    "politicallyExposedPersonRequired": "Please answer this question",
     "termsRequired": "You must accept the terms"
   }
 }

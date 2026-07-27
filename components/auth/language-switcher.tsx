@@ -16,6 +16,8 @@ import { routing } from "@/i18n/routing";
 const LOCALE_LABELS: Record<string, string> = {
   en: "English",
   fr: "Français",
+  de: "Deutsch",
+  es: "Español",
 };
 
 export function LanguageSwitcher() {

@@ -17,6 +17,16 @@
   --brand-primary-foreground: 0 0% 100%;
   --brand-accent: 210 40% 96%;
   --brand-ring: 222 47% 11%;
+  /* Fixed in both light and dark mode (not redefined in .dark below) —
+   * --brand-accent itself never changes between themes (BrandProvider sets
+   * it once from brand data), so the text sitting on it shouldn't invert
+   * either. Was previously unset entirely, which silently no-op'd every
+   * `text-accent-foreground` class (Select/DropdownMenu hover states),
+   * losing contrast against the accent background. */
+  --accent-foreground: 222 47% 11%;
+  /* Default mirrors --brand-accent — BrandProvider only overrides this
+   * per-brand when a Brand explicitly sets colors.footerBackground. */
+  --brand-footer-bg: 210 40% 96%;
   --brand-radius: 0.5rem;
 
   /* Light/dark surface tokens — independent of brand. A brand's primary
@@ -53,7 +63,9 @@
   --color-primary: hsl(var(--brand-primary));
   --color-primary-foreground: hsl(var(--brand-primary-foreground));
   --color-accent: hsl(var(--brand-accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
   --color-ring: hsl(var(--brand-ring));
+  --color-footer: hsl(var(--brand-footer-bg));
   --radius: var(--brand-radius);
 
   --color-background: hsl(var(--background));

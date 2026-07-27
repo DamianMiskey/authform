@@ -1,56 +1,141 @@
 {
   "auth": {
+    "common": {
+      "haveAccountPrompt": "Vous avez déjà un compte ?",
+      "noAccountPrompt": "Vous n'avez pas de compte ?",
+      "logIn": "Se connecter",
+      "register": "S'inscrire"
+    },
+    "login": {
+      "title": "Bon retour",
+      "description": "Connectez-vous pour continuer.",
+      "fields": {
+        "username": "Nom d'utilisateur",
+        "password": "Mot de passe"
+      },
+      "placeholders": {
+        "username": "janedoe"
+      },
+      "submit": "Se connecter",
+      "success": {
+        "title": "Connecté",
+        "welcome": "Bon retour, {username}."
+      }
+    },
     "register": {
       "title": "Créer un compte",
       "description": "Renseignez vos informations pour commencer.",
       "steps": {
         "account": "Compte",
-        "security": "Sécurité",
-        "organization": "Organisation"
+        "personal": "Personnel",
+        "background": "Profil",
+        "contact": "Coordonnées",
+        "verify": "Vérification"
       },
       "stepLabel": "Étape {step} sur {total} : {title}",
+      "regModeToggle": {
+        "full": "Complet",
+        "minReg": "Inscription rapide"
+      },
       "layoutToggle": {
         "standard": "Standard",
         "stepper": "Par étapes"
       },
+      "indicatorToggle": {
+        "icons": "Icônes",
+        "numbers": "Chiffres"
+      },
       "fields": {
-        "name": "Nom complet",
+        "username": "Nom d'utilisateur",
         "email": "E-mail",
-        "dob": "Date de naissance",
         "password": "Mot de passe",
         "confirmPassword": "Confirmer le mot de passe",
-        "company": "Entreprise"
+        "firstName": "Prénom",
+        "middleName": "Deuxième prénom",
+        "lastName": "Nom de famille",
+        "dob": "Date de naissance",
+        "occupationIndustry": "Secteur d'activité",
+        "occupationJobTitle": "Titre du poste",
+        "country": "Pays",
+        "preferredLanguage": "Langue préférée",
+        "currency": "Devise",
+        "dialCode": "Indicatif",
+        "mobileNumber": "Numéro de mobile",
+        "addressLine1": "Adresse (ligne 1)",
+        "addressLine2": "Adresse (ligne 2)",
+        "city": "Ville",
+        "stateProvince": "Province / État",
+        "postCode": "Code postal",
+        "politicallyExposedPerson": "Êtes-vous une personne politiquement exposée ?"
       },
       "placeholders": {
-        "name": "Jeanne Dupont",
+        "username": "janedoe",
         "email": "jeanne@exemple.com",
-        "company": "Acme Inc.",
-        "pickDate": "Choisir une date"
+        "firstName": "Jeanne",
+        "middleName": "",
+        "lastName": "Dupont",
+        "dob": "Choisir une date",
+        "occupationIndustry": "Sélectionnez votre secteur",
+        "occupationJobTitle": "Ingénieure logicielle",
+        "country": "Sélectionnez votre pays",
+        "preferredLanguage": "Sélectionnez une langue",
+        "currency": "Sélectionnez une devise",
+        "dialCode": "Indicatif",
+        "mobileNumber": "(555) 555-0123",
+        "addressLine1": "123 rue Principale",
+        "addressLine2": "Appartement, suite, etc. (facultatif)",
+        "city": "Montréal",
+        "stateProvince": "Sélectionnez une province ou un état",
+        "postCode": "H3B 2Y5"
       },
       "checkboxes": {
-        "ageConfirm": "Je confirme avoir 18 ans ou plus",
-        "terms": "J'accepte les Conditions d'utilisation et la Politique de confidentialité"
+        "promotionalOffers": "Je souhaite recevoir des promotions et offres bonus par e-mail et SMS",
+        "terms": "Je confirme avoir 18 ans ou plus et j'accepte les Conditions d'utilisation et la Politique de confidentialité"
+      },
+      "radio": {
+        "politicallyExposedPerson": {
+          "yes": "Oui",
+          "no": "Non"
+        }
       },
       "submit": "Créer le compte",
       "continue": "Continuer",
       "back": "Retour",
       "startOver": "Recommencer",
+      "minReg": {
+        "title": "Inscription rapide",
+        "description": "Seulement l'essentiel — vous pourrez compléter votre profil plus tard.",
+        "submit": "Créer le compte"
+      },
       "success": {
         "title": "Compte créé",
-        "welcome": "Bienvenue, {name}.",
-        "welcomeWithCompany": "Bienvenue, {name} de {company}."
+        "welcome": "Bienvenue, {name}."
       }
     }
   },
   "errors": {
-    "nameRequired": "Le nom est requis",
+    "usernameRequired": "Le nom d'utilisateur est requis",
+    "usernameTooShort": "Au moins 3 caractères",
     "emailInvalid": "Saisissez un e-mail valide",
-    "dobRequired": "La date de naissance est requise",
-    "dobUnderage": "Vous devez avoir au moins 18 ans pour vous inscrire",
     "passwordTooShort": "Au moins 8 caractères",
     "passwordMismatch": "Les mots de passe ne correspondent pas",
-    "companyRequired": "L'entreprise est requise",
-    "ageConfirmRequired": "Vous devez confirmer que vous avez 18 ans ou plus",
+    "firstNameRequired": "Le prénom est requis",
+    "middleNameRequired": "Le deuxième prénom est requis",
+    "lastNameRequired": "Le nom de famille est requis",
+    "dobRequired": "La date de naissance est requise",
+    "dobUnderage": "Vous devez avoir au moins 18 ans pour vous inscrire",
+    "occupationIndustryRequired": "Le secteur d'activité est requis",
+    "occupationJobTitleRequired": "Le titre du poste est requis",
+    "countryRequired": "Le pays est requis",
+    "preferredLanguageRequired": "La langue préférée est requise",
+    "currencyRequired": "La devise est requise",
+    "dialCodeRequired": "L'indicatif est requis",
+    "mobileNumberRequired": "Le numéro de mobile est requis",
+    "addressLine1Required": "L'adresse est requise",
+    "cityRequired": "La ville est requise",
+    "stateProvinceRequired": "La province / l'état est requis",
+    "postCodeRequired": "Le code postal est requis",
+    "politicallyExposedPersonRequired": "Veuillez répondre à cette question",
     "termsRequired": "Vous devez accepter les conditions"
   }
 }

@@ -1,22 +1,16 @@
-// app/[locale]/(auth)/register/page.tsx
+// app/[locale]/(auth)/login/page.tsx
 //
-// PPR shape: static shell (brand chrome) + three Suspense-scoped dynamic
-// holes — the form itself (field visibility depends on per-request geo),
-// trust badges, and the footer — each needing per-request geo and/or
-// locale. Brands are fetched here too, but that's a cacheable CMS fetch,
-// not a per-request dynamic call, so it doesn't force this page off the
-// shell.
-//
-// Layout: everything above the footer lives in a centered max-w-xl
-// column; the footer itself renders full-bleed (see site-footer.tsx) so
-// its brand-tinted band spans the whole viewport width, pinned to the
-// bottom via the outer flex column.
+// Same shell as register/page.tsx: brand chrome in the static part, trust
+// badges + footer as their own Suspense-scoped geo/locale reads. The form
+// itself doesn't need CMS-resolved field rules (login has no jurisdiction-
+// varying fields), so unlike register it renders directly in the shell —
+// no per-request data, no Suspense boundary needed for it.
 
 import { setRequestLocale } from "next-intl/server";
 import { Suspense } from "react";
 
 import { LanguageSwitcher } from "@/components/auth/language-switcher";
-import { RegisterFormData, RegisterFormSkeleton } from "@/components/auth/register-form-data";
+import { LoginForm } from "@/components/auth/login-form";
 import { AuthFooter } from "@/components/auth/site-footer";
 import { TrustBadgesDynamic, TrustBadgesSkeleton } from "@/components/auth/trust-badges";
 import { BrandProvider } from "@/components/brand/brand-provider";
@@ -24,7 +18,7 @@ import { BrandSwitcher } from "@/components/brand/brand-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getBrands } from "@/lib/cms";
 
-export default async function RegisterPage({
+export default async function LoginPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
@@ -46,9 +40,7 @@ export default async function RegisterPage({
             </div>
           </div>
 
-          <Suspense fallback={<RegisterFormSkeleton />}>
-            <RegisterFormData />
-          </Suspense>
+          <LoginForm />
 
           <Suspense fallback={<TrustBadgesSkeleton />}>
             <TrustBadgesDynamic />

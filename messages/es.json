@@ -1,0 +1,141 @@
+{
+  "auth": {
+    "common": {
+      "haveAccountPrompt": "¿Ya tienes una cuenta?",
+      "noAccountPrompt": "¿No tienes una cuenta?",
+      "logIn": "Iniciar sesión",
+      "register": "Registrarse"
+    },
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "description": "Inicia sesión para continuar.",
+      "fields": {
+        "username": "Nombre de usuario",
+        "password": "Contraseña"
+      },
+      "placeholders": {
+        "username": "janedoe"
+      },
+      "submit": "Iniciar sesión",
+      "success": {
+        "title": "Sesión iniciada",
+        "welcome": "Bienvenido de nuevo, {username}."
+      }
+    },
+    "register": {
+      "title": "Crear una cuenta",
+      "description": "Completa tus datos para empezar.",
+      "steps": {
+        "account": "Cuenta",
+        "personal": "Personal",
+        "background": "Antecedentes",
+        "contact": "Contacto",
+        "verify": "Verificación"
+      },
+      "stepLabel": "Paso {step} de {total}: {title}",
+      "regModeToggle": {
+        "full": "Completo",
+        "minReg": "Registro rápido"
+      },
+      "layoutToggle": {
+        "standard": "Estándar",
+        "stepper": "Por pasos"
+      },
+      "indicatorToggle": {
+        "icons": "Iconos",
+        "numbers": "Números"
+      },
+      "fields": {
+        "username": "Nombre de usuario",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña",
+        "firstName": "Nombre",
+        "middleName": "Segundo nombre",
+        "lastName": "Apellido",
+        "dob": "Fecha de nacimiento",
+        "occupationIndustry": "Sector de actividad",
+        "occupationJobTitle": "Puesto de trabajo",
+        "country": "País",
+        "preferredLanguage": "Idioma preferido",
+        "currency": "Moneda",
+        "dialCode": "Prefijo",
+        "mobileNumber": "Número de móvil",
+        "addressLine1": "Dirección línea 1",
+        "addressLine2": "Dirección línea 2",
+        "city": "Ciudad",
+        "stateProvince": "Provincia / Estado",
+        "postCode": "Código postal",
+        "politicallyExposedPerson": "¿Eres una persona políticamente expuesta?"
+      },
+      "placeholders": {
+        "username": "janedoe",
+        "email": "jane@example.com",
+        "firstName": "Jane",
+        "middleName": "",
+        "lastName": "Doe",
+        "dob": "Elige una fecha",
+        "occupationIndustry": "Selecciona tu sector",
+        "occupationJobTitle": "Ingeniera de software",
+        "country": "Selecciona tu país",
+        "preferredLanguage": "Selecciona un idioma",
+        "currency": "Selecciona una moneda",
+        "dialCode": "Prefijo",
+        "mobileNumber": "(555) 555-0123",
+        "addressLine1": "Calle Principal 123",
+        "addressLine2": "Apartamento, suite, etc. (opcional)",
+        "city": "Toronto",
+        "stateProvince": "Selecciona una provincia o estado",
+        "postCode": "M5V 2T6"
+      },
+      "checkboxes": {
+        "promotionalOffers": "Quiero recibir promociones y ofertas de bonos por correo electrónico y SMS",
+        "terms": "Confirmo que tengo 18 años o más y acepto los Términos de Servicio y la Política de Privacidad"
+      },
+      "radio": {
+        "politicallyExposedPerson": {
+          "yes": "Sí",
+          "no": "No"
+        }
+      },
+      "submit": "Crear cuenta",
+      "continue": "Continuar",
+      "back": "Atrás",
+      "startOver": "Empezar de nuevo",
+      "minReg": {
+        "title": "Registro rápido",
+        "description": "Solo lo esencial — puedes completar tu perfil más tarde.",
+        "submit": "Crear cuenta"
+      },
+      "success": {
+        "title": "Cuenta creada",
+        "welcome": "Bienvenido, {name}."
+      }
+    }
+  },
+  "errors": {
+    "usernameRequired": "El nombre de usuario es obligatorio",
+    "usernameTooShort": "Al menos 3 caracteres",
+    "emailInvalid": "Introduce un correo electrónico válido",
+    "passwordTooShort": "Al menos 8 caracteres",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "firstNameRequired": "El nombre es obligatorio",
+    "middleNameRequired": "El segundo nombre es obligatorio",
+    "lastNameRequired": "El apellido es obligatorio",
+    "dobRequired": "La fecha de nacimiento es obligatoria",
+    "dobUnderage": "Debes tener al menos 18 años para registrarte",
+    "occupationIndustryRequired": "El sector de actividad es obligatorio",
+    "occupationJobTitleRequired": "El puesto de trabajo es obligatorio",
+    "countryRequired": "El país es obligatorio",
+    "preferredLanguageRequired": "El idioma preferido es obligatorio",
+    "currencyRequired": "La moneda es obligatoria",
+    "dialCodeRequired": "El prefijo es obligatorio",
+    "mobileNumberRequired": "El número de móvil es obligatorio",
+    "addressLine1Required": "La dirección es obligatoria",
+    "cityRequired": "La ciudad es obligatoria",
+    "stateProvinceRequired": "La provincia / el estado es obligatorio",
+    "postCodeRequired": "El código postal es obligatorio",
+    "politicallyExposedPersonRequired": "Por favor responde a esta pregunta",
+    "termsRequired": "Debes aceptar los términos"
+  }
+}

@@ -12,19 +12,33 @@
 //   brand { slug, name, logoText, logo (image), primary, primaryForeground,
 //           accent, ring, radius, backgroundImage (image) }
 //
-//   trustBadge { slug, image, labels (object or internationalized-array
+//   trustBadge { slug, image (optional — omit when using icon), icon
+//                (optional string, one of TrustBadgeIcon, e.g.
+//                "shield-check"), labels (object or internationalized-array
 //                with { en, fr } keys), countries (array of strings),
 //                excludeCountries (array of strings) }
 //
-//   footerLogo — same shape as trustBadge
+//   footerLogo — same shape as trustBadge, plus an optional brands (array
+//                of Brand ids this logo should show for; omit = all brands)
 //
 //   license { slug, text (object or internationalized-array with
 //             { en, fr } keys), countries (array of strings),
 //             excludeCountries (array of strings) }
+//
+//   registrationFieldRule { field (string, one of RegistrationFieldKey),
+//                            status ("required" | "optional" | "hidden"),
+//                            countries (array of strings),
+//                            excludeCountries (array of strings) }
 
 import { createClient } from "next-sanity";
 
-import type { CmsAdapter, Brand, TrustBadgeRule, LicenseRule } from "./types";
+import type {
+  CmsAdapter,
+  Brand,
+  TrustBadgeRule,
+  LicenseRule,
+  RegistrationFieldRule,
+} from "./types";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID!,
@@ -56,6 +70,7 @@ const TRUST_BADGE_QUERY = /* groq */ `
 *[_type == "trustBadge"]{
   "id": slug.current,
   "imageUrl": image.asset->url,
+  icon,
   labels,
   countries,
   excludeCountries
@@ -66,9 +81,11 @@ const FOOTER_LOGO_QUERY = /* groq */ `
 *[_type == "footerLogo"]{
   "id": slug.current,
   "imageUrl": image.asset->url,
+  icon,
   labels,
   countries,
-  excludeCountries
+  excludeCountries,
+  brands
 }
 `;
 
@@ -76,6 +93,15 @@ const LICENSE_QUERY = /* groq */ `
 *[_type == "license"]{
   "id": slug.current,
   text,
+  countries,
+  excludeCountries
+}
+`;
+
+const REGISTRATION_FIELD_QUERY = /* groq */ `
+*[_type == "registrationFieldRule"]{
+  field,
+  status,
   countries,
   excludeCountries
 }
@@ -93,5 +119,12 @@ export const sanityAdapter: CmsAdapter = {
   },
   async getLicenses() {
     return client.fetch<LicenseRule[]>(LICENSE_QUERY, {}, { next: { revalidate: 300 } });
+  },
+  async getRegistrationFields() {
+    return client.fetch<RegistrationFieldRule[]>(
+      REGISTRATION_FIELD_QUERY,
+      {},
+      { next: { revalidate: 300 } }
+    );
   },
 };

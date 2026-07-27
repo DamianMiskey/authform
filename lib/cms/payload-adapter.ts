@@ -16,8 +16,17 @@
 //   FooterLogos: same shape as TrustBadges
 //
 //   Licenses: { slug, text: { en, fr }, countries, excludeCountries }
+//
+//   RegistrationFieldRules: { field, status ("required" | "optional" |
+//                             "hidden"), countries, excludeCountries }
 
-import type { CmsAdapter, Brand, TrustBadgeRule, LicenseRule } from "./types";
+import type {
+  CmsAdapter,
+  Brand,
+  TrustBadgeRule,
+  LicenseRule,
+  RegistrationFieldRule,
+} from "./types";
 
 const PAYLOAD_URL = process.env.PAYLOAD_URL ?? "http://localhost:3000";
 
@@ -50,6 +59,7 @@ export const payloadAdapter: CmsAdapter = {
       (doc: any): TrustBadgeRule => ({
         id: doc.slug,
         imageUrl: doc.image?.url,
+        icon: doc.icon,
         labels: doc.labels,
         countries: doc.countries,
         excludeCountries: doc.excludeCountries,
@@ -67,9 +77,11 @@ export const payloadAdapter: CmsAdapter = {
       (doc: any): TrustBadgeRule => ({
         id: doc.slug,
         imageUrl: doc.image?.url,
+        icon: doc.icon,
         labels: doc.labels,
         countries: doc.countries,
         excludeCountries: doc.excludeCountries,
+        brands: doc.brands,
       })
     );
   },
@@ -84,6 +96,22 @@ export const payloadAdapter: CmsAdapter = {
       (doc: any): LicenseRule => ({
         id: doc.slug,
         text: doc.text,
+        countries: doc.countries,
+        excludeCountries: doc.excludeCountries,
+      })
+    );
+  },
+
+  async getRegistrationFields() {
+    const res = await fetch(`${PAYLOAD_URL}/api/registration-field-rules?limit=100`, {
+      next: { revalidate: 300 },
+    });
+    const data = await res.json();
+
+    return data.docs.map(
+      (doc: any): RegistrationFieldRule => ({
+        field: doc.field,
+        status: doc.status,
         countries: doc.countries,
         excludeCountries: doc.excludeCountries,
       })

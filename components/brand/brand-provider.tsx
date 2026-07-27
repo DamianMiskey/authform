@@ -46,6 +46,8 @@ export function BrandProvider({
     "--brand-primary-foreground": brand.colors.primaryForeground,
     "--brand-accent": brand.colors.accent,
     "--brand-ring": brand.colors.ring,
+    // Falls back to accent so brands that don't set this keep today's look.
+    "--brand-footer-bg": brand.colors.footerBackground ?? brand.colors.accent,
     ...(brand.radius ? { "--brand-radius": brand.radius } : {}),
   } as React.CSSProperties;
 

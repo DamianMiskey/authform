@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# agent skills — kept globally (~/.agents, ~/.claude), not per-project
+/.agents
+/.claude

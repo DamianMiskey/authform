@@ -1,0 +1,141 @@
+{
+  "auth": {
+    "common": {
+      "haveAccountPrompt": "Haben Sie bereits ein Konto?",
+      "noAccountPrompt": "Sie haben noch kein Konto?",
+      "logIn": "Anmelden",
+      "register": "Registrieren"
+    },
+    "login": {
+      "title": "Willkommen zurück",
+      "description": "Melden Sie sich an, um fortzufahren.",
+      "fields": {
+        "username": "Benutzername",
+        "password": "Passwort"
+      },
+      "placeholders": {
+        "username": "janedoe"
+      },
+      "submit": "Anmelden",
+      "success": {
+        "title": "Angemeldet",
+        "welcome": "Willkommen zurück, {username}."
+      }
+    },
+    "register": {
+      "title": "Konto erstellen",
+      "description": "Geben Sie Ihre Daten ein, um loszulegen.",
+      "steps": {
+        "account": "Konto",
+        "personal": "Persönlich",
+        "background": "Hintergrund",
+        "contact": "Kontakt",
+        "verify": "Bestätigung"
+      },
+      "stepLabel": "Schritt {step} von {total}: {title}",
+      "regModeToggle": {
+        "full": "Vollständig",
+        "minReg": "Schnellanmeldung"
+      },
+      "layoutToggle": {
+        "standard": "Standard",
+        "stepper": "Schrittweise"
+      },
+      "indicatorToggle": {
+        "icons": "Symbole",
+        "numbers": "Zahlen"
+      },
+      "fields": {
+        "username": "Benutzername",
+        "email": "E-Mail",
+        "password": "Passwort",
+        "confirmPassword": "Passwort bestätigen",
+        "firstName": "Vorname",
+        "middleName": "Zweiter Vorname",
+        "lastName": "Nachname",
+        "dob": "Geburtsdatum",
+        "occupationIndustry": "Berufsbranche",
+        "occupationJobTitle": "Berufsbezeichnung",
+        "country": "Land",
+        "preferredLanguage": "Bevorzugte Sprache",
+        "currency": "Währung",
+        "dialCode": "Vorwahl",
+        "mobileNumber": "Mobilnummer",
+        "addressLine1": "Adresse Zeile 1",
+        "addressLine2": "Adresse Zeile 2",
+        "city": "Stadt",
+        "stateProvince": "Provinz / Bundesstaat",
+        "postCode": "Postleitzahl",
+        "politicallyExposedPerson": "Sind Sie eine politisch exponierte Person?"
+      },
+      "placeholders": {
+        "username": "janedoe",
+        "email": "jane@example.com",
+        "firstName": "Jane",
+        "middleName": "",
+        "lastName": "Doe",
+        "dob": "Datum auswählen",
+        "occupationIndustry": "Wählen Sie Ihre Branche",
+        "occupationJobTitle": "Softwareentwicklerin",
+        "country": "Wählen Sie Ihr Land",
+        "preferredLanguage": "Wählen Sie eine Sprache",
+        "currency": "Wählen Sie eine Währung",
+        "dialCode": "Vorwahl",
+        "mobileNumber": "(555) 555-0123",
+        "addressLine1": "Musterstraße 123",
+        "addressLine2": "Wohnung, Suite usw. (optional)",
+        "city": "Toronto",
+        "stateProvince": "Wählen Sie eine Provinz oder einen Bundesstaat",
+        "postCode": "M5V 2T6"
+      },
+      "checkboxes": {
+        "promotionalOffers": "Ich möchte Werbeaktionen und Bonusangebote per E-Mail und SMS erhalten",
+        "terms": "Ich bestätige, dass ich mindestens 18 Jahre alt bin, und stimme den Nutzungsbedingungen und der Datenschutzrichtlinie zu"
+      },
+      "radio": {
+        "politicallyExposedPerson": {
+          "yes": "Ja",
+          "no": "Nein"
+        }
+      },
+      "submit": "Konto erstellen",
+      "continue": "Weiter",
+      "back": "Zurück",
+      "startOver": "Von vorne beginnen",
+      "minReg": {
+        "title": "Schnellanmeldung",
+        "description": "Nur das Nötigste — Sie können Ihr Profil später vervollständigen.",
+        "submit": "Konto erstellen"
+      },
+      "success": {
+        "title": "Konto erstellt",
+        "welcome": "Willkommen, {name}."
+      }
+    }
+  },
+  "errors": {
+    "usernameRequired": "Benutzername ist erforderlich",
+    "usernameTooShort": "Mindestens 3 Zeichen",
+    "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein",
+    "passwordTooShort": "Mindestens 8 Zeichen",
+    "passwordMismatch": "Passwörter stimmen nicht überein",
+    "firstNameRequired": "Vorname ist erforderlich",
+    "middleNameRequired": "Zweiter Vorname ist erforderlich",
+    "lastNameRequired": "Nachname ist erforderlich",
+    "dobRequired": "Geburtsdatum ist erforderlich",
+    "dobUnderage": "Sie müssen mindestens 18 Jahre alt sein, um sich zu registrieren",
+    "occupationIndustryRequired": "Berufsbranche ist erforderlich",
+    "occupationJobTitleRequired": "Berufsbezeichnung ist erforderlich",
+    "countryRequired": "Land ist erforderlich",
+    "preferredLanguageRequired": "Bevorzugte Sprache ist erforderlich",
+    "currencyRequired": "Währung ist erforderlich",
+    "dialCodeRequired": "Vorwahl ist erforderlich",
+    "mobileNumberRequired": "Mobilnummer ist erforderlich",
+    "addressLine1Required": "Adresse ist erforderlich",
+    "cityRequired": "Stadt ist erforderlich",
+    "stateProvinceRequired": "Provinz / Bundesstaat ist erforderlich",
+    "postCodeRequired": "Postleitzahl ist erforderlich",
+    "politicallyExposedPersonRequired": "Bitte beantworten Sie diese Frage",
+    "termsRequired": "Sie müssen den Bedingungen zustimmen"
+  }
+}

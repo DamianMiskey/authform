@@ -22,5 +22,13 @@ export const getBrands = cache(() => adapter.getBrands());
 export const getTrustBadges = cache(() => adapter.getTrustBadges());
 export const getFooterLogos = cache(() => adapter.getFooterLogos());
 export const getLicenses = cache(() => adapter.getLicenses());
+export const getRegistrationFields = cache(() => adapter.getRegistrationFields());
 
-export type { Brand, TrustBadgeRule, LicenseRule, CmsAdapter } from "./types";
+export type {
+  Brand,
+  TrustBadgeRule,
+  LicenseRule,
+  RegistrationFieldRule,
+  RegistrationFieldKey,
+  CmsAdapter,
+} from "./types";

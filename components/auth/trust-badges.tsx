@@ -6,11 +6,11 @@
 // across route folders.
 
 import { headers } from "next/headers";
-import Image from "next/image";
 import { getLocale } from "next-intl/server";
 
+import { TrustBadgeMark } from "@/components/auth/trust-badge-mark";
 import { getTrustBadges } from "@/lib/cms";
-import { resolveTrustBadges, resolveBadgeLabel } from "@/lib/trust-badges";
+import { resolveTrustBadges } from "@/lib/trust-badges";
 
 export async function TrustBadgesDynamic() {
   const [headersList, locale, allBadges] = await Promise.all([
@@ -27,15 +27,7 @@ export async function TrustBadgesDynamic() {
   return (
     <div className="flex items-center justify-center gap-4 pt-4">
       {badges.map((b) => (
-        <Image
-          key={b.id}
-          src={b.imageUrl}
-          alt={resolveBadgeLabel(b, locale)}
-          width={120}
-          height={32}
-          unoptimized
-          className="h-8 w-auto opacity-80"
-        />
+        <TrustBadgeMark key={b.id} badge={b} locale={locale} />
       ))}
     </div>
   );

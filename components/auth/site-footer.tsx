@@ -1,20 +1,41 @@
 // components/auth/site-footer.tsx
 //
-// Same geo-resolution pattern as trust-badges.tsx: reads the
-// x-user-country header proxy.ts sets, then picks the footer logos and
-// the license notice for that jurisdiction. Kept as a separate component
-// (rather than folded into TrustBadgesDynamic) because these are a
-// distinct content set — footer-level compliance logos and licensing
-// text, not the near-CTA trust badges.
+// AuthFooter is the full-width, brand-tinted (bg-footer, sourced from
+// Brand.colors.footerBackground — falls back to accent if unset) band
+// shared by every auth page — always rendered (logo + copyright never
+// depend on per-request data), with the badges/license row Suspense-scoped
+// inside it since that part alone needs the x-user-country header.
+// Composition: FooterBrand (client, useBrand()) -> FooterDynamic (server,
+// geo) -> FooterCopyright (client, useBrand() + mounted-gated year).
+//
+// FooterDynamic follows the same geo-resolution pattern as
+// trust-badges.tsx: reads the x-user-country header proxy.ts sets, then
+// picks the footer logos and license notice for that jurisdiction.
 
 import { headers } from "next/headers";
-import Image from "next/image";
 import { getLocale } from "next-intl/server";
+import { Suspense } from "react";
 
+import { FooterBadges } from "@/components/auth/footer-badges";
+import { FooterBrand, FooterCopyright } from "@/components/auth/footer-brand";
 import { getFooterLogos, getLicenses } from "@/lib/cms";
-import { resolveTrustBadges, resolveBadgeLabel, resolveLicense, resolveLicenseText } from "@/lib/trust-badges";
+import { resolveTrustBadges, resolveLicense, resolveLicenseText } from "@/lib/trust-badges";
 
-export async function FooterDynamic() {
+export function AuthFooter() {
+  return (
+    <footer className="w-full bg-footer">
+      <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-4 px-6 py-8 text-center">
+        <FooterBrand />
+        <Suspense fallback={<FooterBadgesSkeleton />}>
+          <FooterDynamic />
+        </Suspense>
+        <FooterCopyright />
+      </div>
+    </footer>
+  );
+}
+
+async function FooterDynamic() {
   const [headersList, locale, allLogos, allLicenses] = await Promise.all([
     headers(),
     getLocale(),
@@ -29,34 +50,20 @@ export async function FooterDynamic() {
   if (logos.length === 0 && !license) return null;
 
   return (
-    <footer className="flex w-full max-w-sm flex-col items-center gap-3 border-t pt-4 text-center">
-      {logos.length > 0 && (
-        <div className="flex items-center justify-center gap-4">
-          {logos.map((logo) => (
-            <Image
-              key={logo.id}
-              src={logo.imageUrl}
-              alt={resolveBadgeLabel(logo, locale)}
-              width={120}
-              height={32}
-              unoptimized
-              className="h-8 w-auto opacity-80"
-            />
-          ))}
-        </div>
-      )}
+    <div className="flex w-full flex-col items-center gap-3">
+      <FooterBadges logos={logos} locale={locale} />
       {license && (
-        <p className="text-xs text-muted-foreground">{resolveLicenseText(license, locale)}</p>
+        <p className="text-xs text-primary/80">{resolveLicenseText(license, locale)}</p>
       )}
-    </footer>
+    </div>
   );
 }
 
-export function FooterSkeleton() {
+function FooterBadgesSkeleton() {
   return (
-    <div className="flex w-full max-w-sm flex-col items-center gap-3 border-t pt-4">
-      <div className="h-8 w-40 rounded-md bg-slate-200/70 animate-pulse" />
-      <div className="h-3 w-56 rounded-md bg-slate-200/70 animate-pulse" />
+    <div className="flex w-full flex-col items-center gap-3">
+      <div className="h-8 w-40 rounded-md bg-black/10 animate-pulse" />
+      <div className="h-3 w-56 rounded-md bg-black/10 animate-pulse" />
     </div>
   );
 }

@@ -24,6 +24,14 @@ export function resolveBadgeLabel(badge: TrustBadgeRule, locale: string): string
   return badge.labels[locale] ?? badge.labels.en;
 }
 
+// Brand filtering happens as a second, client-side pass (see FooterBadges)
+// on top of the already country-resolved list — the active brand is
+// client-only state (BrandProvider), unlike country which comes from the
+// per-request geo header FooterDynamic already has server-side.
+export function resolveBrandScoped(brandId: string, badges: TrustBadgeRule[]): TrustBadgeRule[] {
+  return badges.filter((badge) => !badge.brands || badge.brands.includes(brandId));
+}
+
 // Licenses are mutually exclusive per jurisdiction, so this resolves to at
 // most one rule — unlike badges, which can stack.
 export function resolveLicense(country: string, licenses: LicenseRule[]): LicenseRule | undefined {
