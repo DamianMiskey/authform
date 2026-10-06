@@ -6,21 +6,37 @@
   "compatibility_flags": [
     // Node.js APIs for the Next.js server + Node-runtime proxy.ts
     "nodejs_compat",
-    "global_fetch_strictly_public"
+    "global_fetch_strictly_public",
   ],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
   },
   "services": [
     {
       // Must match "name" above — used by OpenNext for internal revalidation requests
       "binding": "WORKER_SELF_REFERENCE",
-      "service": "authform"
-    }
+      "service": "authform",
+    },
   ],
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "invocation_logs": true,
+      "persist": true,
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 1,
+      "persist": true,
+    },
+    "issues": {
+      "enabled": true,
+    },
+  },
   "images": {
     // next/image optimization via Cloudflare Images
-    "binding": "IMAGES"
-  }
+    "binding": "IMAGES",
+  },
 }
