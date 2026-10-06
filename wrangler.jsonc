@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "main": ".open-next/worker.js",
+  "name": "authform",
+  "compatibility_date": "2026-10-06",
+  "compatibility_flags": [
+    // Node.js APIs for the Next.js server + Node-runtime proxy.ts
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      // Must match "name" above — used by OpenNext for internal revalidation requests
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "authform"
+    }
+  ],
+  "images": {
+    // next/image optimization via Cloudflare Images
+    "binding": "IMAGES"
+  }
+}

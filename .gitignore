@@ -43,3 +43,9 @@ next-env.d.ts
 # agent skills — kept globally (~/.agents, ~/.claude), not per-project
 /.agents
 /.claude
+
+# cloudflare / opennext
+/.open-next
+/.wrangler
+.dev.vars*
+cloudflare-env.d.ts
