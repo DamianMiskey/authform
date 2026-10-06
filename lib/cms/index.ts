@@ -5,24 +5,66 @@
 // never from an adapter file directly. Changing CMS providers later is
 // this one file, nothing downstream needs to know.
 
-import { cache } from "react";
+import { cacheLife, cacheTag } from "next/cache";
 
-// import { staticAdapter } from "./static-adapter";
+import { staticAdapter } from "./static-adapter";
 // import { sanityAdapter } from "./sanity-adapter";
-import { payloadAdapter } from "./payload-adapter";
+// import { payloadAdapter } from "./payload-adapter";
 
-// const adapter = staticAdapter;
+// Back on static until Payload is deployed somewhere the build can reach —
+// with "use cache" below, CMS data is fetched at build time, and the
+// payload adapter's PAYLOAD_URL currently points at localhost.
+const adapter = staticAdapter;
 // const adapter = sanityAdapter;
-const adapter = payloadAdapter;
+// const adapter = payloadAdapter;
 
-// react's cache() dedupes this within a single render pass — if both the
-// layout and the page happen to ask for brands on the same request, it
-// only actually fetches once.
-export const getBrands = cache(() => adapter.getBrands());
-export const getTrustBadges = cache(() => adapter.getTrustBadges());
-export const getFooterLogos = cache(() => adapter.getFooterLogos());
-export const getLicenses = cache(() => adapter.getLicenses());
-export const getRegistrationFields = cache(() => adapter.getRegistrationFields());
+// Every getter is a "use cache" function, applied here (not per adapter) so
+// whichever adapter is active gets the same treatment. With cacheComponents
+// on, a plain fetch — even one with `next: { revalidate }` — counts as
+// uncached data, and getBrands() is awaited directly in the register/login
+// static shells (outside any Suspense), which fails the prerender.
+//
+// "minutes" (revalidate 1m, expire 1h) is deliberately the shortest built-in
+// profile: anything expiring in under 5 minutes is excluded from prerenders
+// and would reintroduce the same error. For instant brand edits, use Payload
+// Live Preview (LivePreviewBrandSync) or revalidateTag("cms").
+//
+// "use cache" also dedupes within a render pass, so react's cache() isn't
+// needed on top.
+export async function getBrands() {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("cms", "cms:brands");
+  return adapter.getBrands();
+}
+
+export async function getTrustBadges() {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("cms", "cms:trust-badges");
+  return adapter.getTrustBadges();
+}
+
+export async function getFooterLogos() {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("cms", "cms:footer-logos");
+  return adapter.getFooterLogos();
+}
+
+export async function getLicenses() {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("cms", "cms:licenses");
+  return adapter.getLicenses();
+}
+
+export async function getRegistrationFields() {
+  "use cache";
+  cacheLife("minutes");
+  cacheTag("cms", "cms:registration-fields");
+  return adapter.getRegistrationFields();
+}
 
 export type {
   Brand,
