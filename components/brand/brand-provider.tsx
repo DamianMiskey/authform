@@ -8,6 +8,10 @@ interface BrandContextValue {
   brand: Brand;
   setBrandId: (id: string) => void;
   brands: Brand[];
+  /** Live Preview support (see live-preview-brand-sync.tsx): lets a nested
+   *  client component push CMS edits for the currently-previewed brand in
+   *  without a refetch. No-op outside Payload's Live Preview iframe. */
+  setLivePreviewOverride: (brand: Brand | null) => void;
 }
 
 const BrandContext = createContext<BrandContextValue | null>(null);
@@ -31,11 +35,14 @@ export function BrandProvider({
   initialBrandId?: string;
 }>) {
   const [brandId, setBrandId] = useState(initialBrandId ?? brands[0]?.id);
+  const [livePreviewOverride, setLivePreviewOverride] = useState<Brand | null>(null);
 
-  const brand = useMemo(
-    () => brands.find((b) => b.id === brandId) ?? brands[0],
-    [brandId, brands]
-  );
+  const brand = useMemo(() => {
+    if (livePreviewOverride && livePreviewOverride.id === brandId) {
+      return livePreviewOverride;
+    }
+    return brands.find((b) => b.id === brandId) ?? brands[0];
+  }, [brandId, brands, livePreviewOverride]);
 
   if (!brand) {
     throw new Error("BrandProvider received an empty brands array");
@@ -52,7 +59,7 @@ export function BrandProvider({
   } as React.CSSProperties;
 
   return (
-    <BrandContext.Provider value={{ brand, setBrandId, brands }}>
+    <BrandContext.Provider value={{ brand, setBrandId, brands, setLivePreviewOverride }}>
       <div data-brand={brand.id} style={cssVars}>
         {children}
       </div>

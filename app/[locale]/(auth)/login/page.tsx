@@ -15,6 +15,7 @@ import { AuthFooter } from "@/components/auth/site-footer";
 import { TrustBadgesDynamic, TrustBadgesSkeleton } from "@/components/auth/trust-badges";
 import { BrandProvider } from "@/components/brand/brand-provider";
 import { BrandSwitcher } from "@/components/brand/brand-switcher";
+import { LivePreviewBrandSync } from "@/components/brand/live-preview-brand-sync";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { getBrands } from "@/lib/cms";
 
@@ -30,6 +31,7 @@ export default async function LoginPage({
 
   return (
     <BrandProvider brands={brands}>
+      <LivePreviewBrandSync />
       <div data-page="auth" className="flex min-h-screen w-full flex-col bg-background">
         <div className="flex w-full flex-1 flex-col items-center justify-center gap-4 p-6">
           <div className="flex w-full max-w-xl justify-between gap-2">

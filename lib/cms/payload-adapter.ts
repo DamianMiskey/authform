@@ -33,7 +33,7 @@ const PAYLOAD_URL = process.env.PAYLOAD_URL ?? "http://localhost:3000";
 export const payloadAdapter: CmsAdapter = {
   async getBrands() {
     const res = await fetch(`${PAYLOAD_URL}/api/brands?limit=100`, {
-      next: { revalidate: 300 }, // CMS content is fine on a short ISR-style revalidation window
+      next: { revalidate: 5 }, // TEMP: shortened from 300 for local theming iteration — revert before shipping
     });
     const data = await res.json();
 
@@ -51,7 +51,7 @@ export const payloadAdapter: CmsAdapter = {
 
   async getTrustBadges() {
     const res = await fetch(`${PAYLOAD_URL}/api/trust-badges?limit=100`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 5 }, // TEMP: shortened from 300 for local theming iteration — revert before shipping
     });
     const data = await res.json();
 
@@ -69,7 +69,7 @@ export const payloadAdapter: CmsAdapter = {
 
   async getFooterLogos() {
     const res = await fetch(`${PAYLOAD_URL}/api/footer-logos?limit=100`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 5 }, // TEMP: shortened from 300 for local theming iteration — revert before shipping
     });
     const data = await res.json();
 
@@ -88,7 +88,7 @@ export const payloadAdapter: CmsAdapter = {
 
   async getLicenses() {
     const res = await fetch(`${PAYLOAD_URL}/api/licenses?limit=100`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 5 }, // TEMP: shortened from 300 for local theming iteration — revert before shipping
     });
     const data = await res.json();
 
@@ -104,7 +104,7 @@ export const payloadAdapter: CmsAdapter = {
 
   async getRegistrationFields() {
     const res = await fetch(`${PAYLOAD_URL}/api/registration-field-rules?limit=100`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 5 }, // TEMP: shortened from 300 for local theming iteration — revert before shipping
     });
     const data = await res.json();
 

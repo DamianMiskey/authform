@@ -7,13 +7,13 @@
 
 import { cache } from "react";
 
-import { staticAdapter } from "./static-adapter";
+// import { staticAdapter } from "./static-adapter";
 // import { sanityAdapter } from "./sanity-adapter";
-// import { payloadAdapter } from "./payload-adapter";
+import { payloadAdapter } from "./payload-adapter";
 
-const adapter = staticAdapter;
+// const adapter = staticAdapter;
 // const adapter = sanityAdapter;
-// const adapter = payloadAdapter;
+const adapter = payloadAdapter;
 
 // react's cache() dedupes this within a single render pass — if both the
 // layout and the page happen to ask for brands on the same request, it
